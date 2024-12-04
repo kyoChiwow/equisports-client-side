@@ -1,3 +1,14 @@
+/* Google Fonts Settings */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+/* Google Fonts Settings */
+
+/* Font in BODY */
+body {
+  font-family: Raleway;
+}
+/* Font in BODY */
+
+
 /* Tailwind Settings here */
 @tailwind base;
 @tailwind components;
