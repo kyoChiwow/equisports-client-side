@@ -1,9 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const NavBar = () => {
   const [theme, setTheme] = useState("light")
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    signOutUser();
+  }
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme)
@@ -95,13 +101,26 @@ const NavBar = () => {
         </div>
         {/* Items  */}
         {/* Login and Register and theme */}
-        <div className="flex gap-4">
-          <Link to={"/auth/login"}>
+        <div className="flex items-center gap-4">
+          {user ? 
+          (
+            <>
+            <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+            <button onClick={handleLogOut} className="btn btn-error btn-outline">Sign Out</button>
+            </>
+          )
+          :
+          (
+            <>
+            <Link to={"/auth/login"}>
             <button className="btn text-white btn-success">Login</button>
           </Link>
           <Link to={"/auth/register"}>
-            <button className="btn text-white btn-secondary">Register</button>
+            <button className="btn text-white btn-outline btn-secondary">Register</button>
           </Link>
+            </>
+          )  
+        }
           <label className="swap swap-rotate" onClick={handleThemeChange}>
             {/* this hidden checkbox controls the state */}
             <input
