@@ -2,18 +2,25 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
+import { Tooltip } from "react-tooltip";
+import Loading from "../Pages/Loading";
 
 const NavBar = () => {
   const [theme, setTheme] = useState("light")
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, signOutUser, loading } = useContext(AuthContext);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme)
+  }, [theme]);
 
   const handleLogOut = () => {
     signOutUser();
   }
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme)
-  }, [theme]);
+
+  if(loading) {
+    return <Loading></Loading>
+  }
   
   const handleThemeChange = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -64,11 +71,11 @@ const NavBar = () => {
   );
   return (
     <div className="bg-[#343434]">
-      <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto flex justify-between items-center">
+      <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto flex justify-between items-center">
         {/* Logo and Name */}
         <div className="flex items-center">
           <img className="w-[90px] rounded-full" src={logo} alt="" />
-          <h1 className="text-3xl font-bold text-white hidden lg:flex">
+          <h1 className="text-3xl font-bold text-white hidden xl:flex">
             EquiSports
           </h1>
         </div>
@@ -94,7 +101,7 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow bg-[#222222] bg-opacity-95"
           >
             {links}
           </ul>
@@ -105,7 +112,13 @@ const NavBar = () => {
           {user ? 
           (
             <>
-            <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+            <img 
+            data-tooltip-id="username-tootltip"
+            data-tooltip-content={user?.displayName || "Anonymous"}
+            data-tooltip-place="bottom"
+            className="w-10 h-10 rounded-full object-cover" 
+            src={user?.photoURL} 
+            alt="User Profile Picture here" />
             <button onClick={handleLogOut} className="btn btn-error btn-outline">Sign Out</button>
             </>
           )
@@ -150,6 +163,7 @@ const NavBar = () => {
           </label>
         </div>
         {/* Login and Register and theme */}
+        <Tooltip id="username-tooltip"></Tooltip>
       </div>
     </div>
   );
