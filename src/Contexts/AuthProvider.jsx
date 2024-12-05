@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { createContext, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from "firebase/auth";
 import app from "../Firebase.init.config";
 
 
@@ -11,6 +11,17 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    // Setting up observer
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false)
+        })
+        return () => {
+            unsubscribe();
+        }
+    }, []);
 
     // Creating User using Email and Password
     const creatingWithEmail = (email, password) => {
