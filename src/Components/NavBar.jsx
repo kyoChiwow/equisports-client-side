@@ -113,7 +113,7 @@ const NavBar = () => {
           (
             <>
             <img 
-            data-tooltip-id="username-tootltip"
+            data-tooltip-id="username-tooltip"
             data-tooltip-content={user?.displayName || "Anonymous"}
             data-tooltip-place="bottom"
             className="w-10 h-10 rounded-full object-cover" 

@@ -1,12 +1,45 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { creatingWithEmail, setUser, updateUser, setLoading } =
+  const { creatingWithEmail, setUser, updateUser, setLoading, googleSignIn } =
     useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        Swal.fire({
+          title: "Success!",
+          text: "You have successfully logged into your account!",
+          icon: "success",
+          willClose: () => {
+            navigate("/");
+          },
+        });
+      })
+      .catch((err) => {
+        if (err.code === "auth/popup-closed-by-user") {
+          return;
+        }
+        Swal.fire({
+          title: "Error!",
+          text: err.message,
+          icon: "error",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -16,16 +49,15 @@ const Register = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
-
     // Sending data to server
-    const newUser = {username, email, photo, password}
+    const newUser = { username, email, photo, password };
     fetch("http://localhost:5000/users", {
-        method: "POST",
-        headers: {
-            "content-type" : "application/json"
-        },
-        body: JSON.stringify(newUser),
-    })
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
     // Sending data to server
 
     // Checking the password before executing
@@ -111,19 +143,33 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="font-semibold">Password:</span>
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Enter Your Password"
               name="password"
               className="input input-bordered"
               required
             />
+            <button
+              onClick={() => setShowPassword(!showPassword)}
+              className="btn btn-xs absolute right-4 bottom-3"
+            >
+              {showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
+            </button>
           </div>
-          <div className="form-control mt-6">
+          <div className="flex flex-col mt-6">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn font-bold text-xl text-black"
+            >
+              <FcGoogle></FcGoogle> Login With Google
+            </button>
+          </div>
+          <div className="form-control mt-2">
             <button className="btn btn-info font-bold text-xl">Register</button>
           </div>
         </form>
