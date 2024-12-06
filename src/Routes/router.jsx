@@ -4,6 +4,8 @@ import AllEquipments from "../Pages/AllEquipments";
 import AuthLayout from "../Layouts/AuthLayout";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import PrivateRoute from "./PrivateRoute";
+import AddEquipment from "../Pages/AddEquipment";
 
   const router = createBrowserRouter([
     {
@@ -13,6 +15,13 @@ import Login from "../Pages/Login";
     {
       path: "/allequipments",
       element: <AllEquipments></AllEquipments>
+    },
+    {
+      path: "/addequipment",
+      element: 
+      <PrivateRoute>
+        <AddEquipment></AddEquipment>
+      </PrivateRoute>
     },
     {
       path: "/auth",

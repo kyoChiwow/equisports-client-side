@@ -48,7 +48,7 @@ const NavBar = () => {
         All Equipments
       </NavLink>
       <NavLink
-        to={"/auth/addequipment"}
+        to={"/addequipment"}
         className={({ isActive }) =>
           isActive
             ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
@@ -58,7 +58,7 @@ const NavBar = () => {
         Add Equipment
       </NavLink>
       <NavLink
-        to={"/auth/myequipment"}
+        to={"/myequipment"}
         className={({ isActive }) =>
           isActive
             ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"

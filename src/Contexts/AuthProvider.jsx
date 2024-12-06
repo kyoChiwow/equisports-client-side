@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import app from "../Firebase.init.config";
+import app from "../Utils/firebase.init.config";
 
 
 // eslint-disable-next-line react-refresh/only-export-components

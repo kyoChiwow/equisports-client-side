@@ -30,7 +30,7 @@ const Banner = () => {
       {/* Info div */}
 
       {/* Banner Slides */}
-      <div className="mt-10">
+      <div className="mt-10" data-aos="fade-up">
         <div className="w-full xl:h-[600px]">
           <Swiper
             modules={[Autoplay, Navigation, Pagination]}
