@@ -25,6 +25,7 @@ const Products = () => {
     }
   };
 
+
   // Fetching the data here is useEffect
   useEffect(() => {
     setLoading(true);
@@ -37,6 +38,11 @@ const Products = () => {
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if(loading) {
+    return <Loading></Loading>
+  }
+  
   return (
     <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
       {/* Product header div */}

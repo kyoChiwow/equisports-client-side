@@ -8,6 +8,10 @@ body {
 }
 /* Font in BODY */
 
+html, body {
+  overflow-x: hidden;
+}
+
 
 /* Tailwind Settings here */
 @tailwind base;

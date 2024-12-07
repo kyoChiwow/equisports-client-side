@@ -4,6 +4,7 @@ import NavBar from "../Components/NavBar";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Products from "../Components/Products";
+import Footer from "../Components/Footer";
 
 
 const HomeLayout = () => {
@@ -60,6 +61,12 @@ const HomeLayout = () => {
         <Products></Products>
       </div>
       {/* Products Div */}
+
+      {/* Footer Div */}
+      <footer className="mt-20">
+        <Footer></Footer>
+      </footer>
+      {/* Footer Div */}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import NavBar from "../Components/NavBar";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Pages/Loading";
+import Footer from "../Components/Footer";
 
 const AuthLayout = () => {
     const { loading } = useContext(AuthContext);
@@ -25,7 +26,9 @@ const AuthLayout = () => {
             {/* Main Content here */}
 
             {/* Footer here */}
-
+            <footer className="mt-20">
+                <Footer></Footer>
+            </footer>
             {/* Footer here */}
         </div>
     );

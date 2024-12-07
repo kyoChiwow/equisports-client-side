@@ -3,6 +3,7 @@ import NavBar from "../Components/NavBar";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import Swal from "sweetalert2";
+import Footer from "../Components/Footer";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
@@ -268,6 +269,12 @@ const AddEquipment = () => {
         {/* Form Div */}
       </main>
       {/* Add Equipment form here */}
+
+      {/* Footer Div */}
+      <footer className="mt-20">
+        <Footer></Footer>
+      </footer>
+      {/* Footer Div */}
     </div>
   );
 };

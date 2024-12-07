@@ -7,6 +7,7 @@ import Login from "../Pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import AddEquipment from "../Pages/AddEquipment";
 import ViewDetails from "../Pages/ViewDetails";
+import Error404 from "../Pages/Error404";
 
 const router = createBrowserRouter([
   {
@@ -26,12 +27,17 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/details/:id",
+    path: "/products/:id",
     element: (
       <PrivateRoute>
         <ViewDetails></ViewDetails>
       </PrivateRoute>
     ),
+    loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+  },
+  {
+    path: "*",
+    element: <Error404></Error404>,
   },
   {
     path: "/auth",

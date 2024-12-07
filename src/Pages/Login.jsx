@@ -22,7 +22,7 @@ const Login = () => {
         text: "You have successfully logged into your account!",
         icon: "success",
         willClose: () => {
-          navigate("/");
+          navigate(location?.state ? location.state : "/");
         },
       });
     })

@@ -50,7 +50,7 @@ const Register = () => {
     const password = e.target.password.value;
 
     // Sending data to server
-    const newUser = { username, email, photo, password };
+    const newUser = { username, email, photo };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
