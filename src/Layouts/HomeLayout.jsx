@@ -3,6 +3,7 @@ import Banner from "../Components/Banner";
 import NavBar from "../Components/NavBar";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Products from "../Components/Products";
 
 
 const HomeLayout = () => {
@@ -14,7 +15,7 @@ const HomeLayout = () => {
       easing: "ease-in-out",
       once: false,
       offset: 100,
-      delay: 40,
+      delay: 200,
     });
 
     // AOS refresh on scroll
@@ -37,16 +38,28 @@ const HomeLayout = () => {
   return (
     <div>
       {/* Navbar Div here */}
-      <header data-aos="fade-down">
+      <header className="lg:block hidden" data-aos="fade-down">
+        <NavBar></NavBar>
+      </header>
+      {/* Navbar Div here */}
+
+      {/* Navbar Div here */}
+      <header className="lg:hidden block">
         <NavBar></NavBar>
       </header>
       {/* Navbar Div here */}
 
       {/* Banner Div here */}
-      <div className="mt-10">
+      <div className="mt-10 px-3">
         <Banner></Banner>
       </div>
       {/* Banner Div here */}
+
+      {/* Products Div */}
+      <div className="mt-20">
+        <Products></Products>
+      </div>
+      {/* Products Div */}
     </div>
   );
 };

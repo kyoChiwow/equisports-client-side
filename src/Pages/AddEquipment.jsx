@@ -3,14 +3,13 @@ import NavBar from "../Components/NavBar";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
 
   const handleAddEquipment = (e) => {
     e.preventDefault();
+    const form = e.target;
     const itemName = e.target.itemname.value;
     const itemCategory = e.target.category.value;
     const itemPhoto = e.target.addphoto.value;
@@ -18,7 +17,7 @@ const AddEquipment = () => {
     const itemCustomization = e.target.customize.value;
     const itemTime = parseInt(e.target.processtime.value);
     const itemPrice = parseInt(e.target.price.value);
-    const itemRating = parseInt(e.target.rating.value);
+    const itemRating = e.target.rating.value;
     const itemStock = parseInt(e.target.stock.value);
     const itemUserName = e.target.username.value;
     const itemUserEmail = e.target.useremail.value;
@@ -52,7 +51,7 @@ const AddEquipment = () => {
             text: "You have successfully created your account!",
             icon: "success",
             willClose: () => {
-              navigate("/");
+              form.reset();
             },
           });
     })
@@ -94,7 +93,7 @@ const AddEquipment = () => {
             <form onSubmit={handleAddEquipment} className="card-body">
               {/* Form 1st part */}
               <div className="flex lg:flex-row flex-col gap-4">
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Item Name</span>
                   </label>
@@ -106,7 +105,7 @@ const AddEquipment = () => {
                     required
                   />
                 </div>
-                <label className="form-control w-[49%]">
+                <label className="form-control lg:w-[49%]">
                   <div className="label">
                     <span className="font-semibold">Category Name</span>
                   </div>
@@ -126,7 +125,7 @@ const AddEquipment = () => {
 
               {/* Form 2nd part */}
               <div className="flex lg:flex-row flex-col gap-4">
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Image URL</span>
                   </label>
@@ -138,7 +137,7 @@ const AddEquipment = () => {
                     required
                   />
                 </div>
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Product Description</span>
                   </label>
@@ -155,7 +154,7 @@ const AddEquipment = () => {
 
               {/* Form 3rd part */}
               <div className="flex lg:flex-row flex-col gap-4">
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Product Customization</span>
                   </label>
@@ -167,7 +166,7 @@ const AddEquipment = () => {
                     required
                   />
                 </div>
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Processing Time</span>
                   </label>
@@ -184,7 +183,7 @@ const AddEquipment = () => {
 
               {/* Form 4th part */}
               <div className="flex lg:flex-row flex-col gap-4">
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Product Price</span>
                   </label>
@@ -196,12 +195,12 @@ const AddEquipment = () => {
                     required
                   />
                 </div>
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Product Rating</span>
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Enter Product Rating (0-5)"
                     name="rating"
                     className="input input-bordered"
@@ -213,7 +212,7 @@ const AddEquipment = () => {
 
               {/* Form 5th part */}
               <div className="flex lg:flex-row flex-col gap-4">
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">User Email</span>
                   </label>
@@ -227,7 +226,7 @@ const AddEquipment = () => {
                     required
                   />
                 </div>
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">User Name</span>
                   </label>
@@ -246,7 +245,7 @@ const AddEquipment = () => {
 
               {/* Form 6th part */}
               <div className="flex lg:flex-row flex-col gap-4">
-                <div className="form-control w-[49%]">
+                <div className="form-control lg:w-[49%]">
                   <label className="label">
                     <span className="font-semibold">Available Stock</span>
                   </label>

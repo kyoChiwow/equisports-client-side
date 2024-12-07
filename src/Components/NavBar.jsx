@@ -6,25 +6,24 @@ import { Tooltip } from "react-tooltip";
 import Loading from "../Pages/Loading";
 
 const NavBar = () => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("light");
   const { user, signOutUser, loading } = useContext(AuthContext);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme)
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   const handleLogOut = () => {
     signOutUser();
+  };
+
+  if (loading) {
+    return <Loading></Loading>;
   }
 
-
-  if(loading) {
-    return <Loading></Loading>
-  }
-  
   const handleThemeChange = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  }
+  };
   const links = (
     <>
       <NavLink
@@ -101,7 +100,7 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow bg-[#222222] bg-opacity-95"
+            className="menu menu-md dropdown-content rounded-box z-[1000] mt-3 w-52 p-2 shadow bg-[#222222] bg-opacity-95"
           >
             {links}
           </ul>
@@ -109,31 +108,35 @@ const NavBar = () => {
         {/* Items  */}
         {/* Login and Register and theme */}
         <div className="flex items-center gap-4">
-          {user ? 
-          (
+          {user ? (
             <>
-            <img 
-            data-tooltip-id="username-tooltip"
-            data-tooltip-content={user?.displayName || "Anonymous"}
-            data-tooltip-place="bottom"
-            className="w-10 h-10 rounded-full object-cover" 
-            src={user?.photoURL} 
-            alt="User Profile Picture here" />
-            <button onClick={handleLogOut} className="btn btn-error btn-outline">Sign Out</button>
+              <img
+                data-tooltip-id="username-tooltip"
+                data-tooltip-content={user?.displayName || "Anonymous"}
+                data-tooltip-place="bottom"
+                className="w-10 h-10 rounded-full object-cover"
+                src={user?.photoURL}
+                alt="User Profile Picture here"
+              />
+              <button
+                onClick={handleLogOut}
+                className="btn btn-error btn-outline"
+              >
+                Sign Out
+              </button>
             </>
-          )
-          :
-          (
+          ) : (
             <>
-            <Link to={"/auth/login"}>
-            <button className="btn text-white btn-success">Login</button>
-          </Link>
-          <Link to={"/auth/register"}>
-            <button className="btn text-white btn-outline btn-secondary">Register</button>
-          </Link>
+              <Link to={"/auth/login"}>
+                <button className="btn text-white btn-success">Login</button>
+              </Link>
+              <Link to={"/auth/register"}>
+                <button className="btn text-white btn-outline btn-secondary">
+                  Register
+                </button>
+              </Link>
             </>
-          )  
-        }
+          )}
           <label className="swap swap-rotate" onClick={handleThemeChange}>
             {/* this hidden checkbox controls the state */}
             <input

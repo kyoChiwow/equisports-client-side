@@ -45,7 +45,7 @@ const Banner = () => {
                 <img
                   src={s1}
                   alt="Slide 1"
-                  className="object-contain w-full h-full"
+                  className="object-contain rounded-xl h-full"
                 />
               </div>
             </SwiperSlide>
@@ -54,7 +54,7 @@ const Banner = () => {
                 <img
                   src={s2}
                   alt="Slide 2"
-                  className="object-contain w-full h-full"
+                  className="object-contain rounded-xl h-full"
                 />
               </div>
             </SwiperSlide>
@@ -63,7 +63,7 @@ const Banner = () => {
                 <img
                   src={s3}
                   alt="Slide 3"
-                  className="object-contain w-full h-full"
+                  className="object-contain rounded-xl h-full"
                 />
               </div>
             </SwiperSlide>
