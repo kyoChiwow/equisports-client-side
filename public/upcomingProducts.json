@@ -1,0 +1,33 @@
+[
+    {
+      "productName": "AeroFlex Elite Treadmill",
+      "productDescription": "Engineered for peak performance, this high-end treadmill features advanced shock absorption, an ultra-quiet motor, and an interactive touchscreen for immersive workout experiences.",
+      "productImage": "https://i.ibb.co.com/vQnS6kn/Aero-Flex-Elite-Treadmill.jpg"
+    },
+    {
+      "productName": "EvoGrip Pro Kettlebell Set",
+      "productDescription": "Crafted with precision, this premium kettlebell set boasts ergonomic handles, sleek matte finishes, and durable materials for professional-grade strength training.",
+      "productImage": "https://i.ibb.co.com/xHxqgn9/Evo-Grip-Pro-Kettlebell-Set.jpg"
+    },
+    {
+      "productName": "LuxeHydrate Titanium Water Bottle",
+      "productDescription": "A luxury water bottle with a titanium body, vacuum insulation for 36-hour temperature retention, and a sleek, modern design. Perfect for the eco-conscious athlete.",
+      "productImage": "https://i.ibb.co.com/qRsXYRr/Luxe-Hydrate-Titanium-Water-Bottle.jpg"
+    },
+    {
+      "productName": "Ascend Pro Yoga Mat",
+      "productDescription": "Premium yoga mat made with eco-friendly, non-slip materials, offering unparalleled cushioning and stability for advanced yoga practitioners.",
+      "productImage": "https://i.ibb.co.com/gVvwKF4/Ascend-Pro-Yoga-Mat.jpg"
+    },
+    {
+      "productName": "Platinum Edge Racket",
+      "productDescription": "Designed for elite players, this premium badminton racket features a lightweight titanium frame, enhanced string tension, and unmatched aerodynamics.",
+      "productImage": "https://i.ibb.co.com/vstPZ0T/Platinum-Edge-Racket.jpg"
+    },
+    {
+      "productName": "Vortex Velocity Smart Bike",
+      "productDescription": "A cutting-edge stationary bike with AI-powered resistance control, a large HD display, and real-time performance tracking for a fully connected fitness experience.",
+      "productImage": "https://i.ibb.co.com/qjgW5rr/Vortex-Velocity-Smart-Bike.jpg"
+    }
+  ]
+  

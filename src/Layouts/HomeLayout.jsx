@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import Products from "../Components/Products";
 import Footer from "../Components/Footer";
 import Faq from "../Components/Faq";
+import UpcomingCard from "../Components/UpcomingCard";
 
 
 const HomeLayout = () => {
@@ -68,6 +69,12 @@ const HomeLayout = () => {
         <Faq></Faq>
       </div>
       {/* FAQ Div */}
+
+      {/* Upcoming Products Div */}
+      <div className="mt-24">
+        <UpcomingCard></UpcomingCard>
+      </div>
+      {/* Upcoming Products Div */}
 
       {/* Footer Div */}
       <footer className="mt-20">
