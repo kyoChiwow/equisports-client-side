@@ -19,7 +19,25 @@ const MyEquipment = () => {
       .finally(() => {
         setLoading(false);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleDeleteProduct = (id) => {
+        // Deleting from the database here
+        fetch(`http://localhost:5000/products/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              const remainingProducts = emailProducts.filter(
+                (product) => product._id !== id
+              );
+              setEmailProducts(remainingProducts);
+            }
+          });
+      }
+
 
   if (loading) {
     return <Loading></Loading>;
@@ -48,11 +66,12 @@ const MyEquipment = () => {
       {/* My Equipment Header div here */}
 
       {/* Product List Div here */}
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-10 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
         {emailProducts.map((emailProduct, idx) => (
           <MyEquipCard 
           key={idx} 
           product={emailProduct}
+          onDelete= {handleDeleteProduct}
           ></MyEquipCard>
         ))}
       </div>

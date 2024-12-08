@@ -46,6 +46,7 @@ const AddEquipment = () => {
         body: JSON.stringify(newProduct)
     })
     .then(res => res.json())
+    // eslint-disable-next-line no-unused-vars
     .then((data) => {
         Swal.fire({
             title: "Success!",

@@ -30,6 +30,7 @@ const UpdateProduct = () => {
       .then((data) => {
         setFetchedProduct(data);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleUpdateProduct = (e) => {
@@ -70,6 +71,7 @@ const UpdateProduct = () => {
       body: JSON.stringify(newUpdatedProduct),
     })
       .then((res) => res.json())
+      // eslint-disable-next-line no-unused-vars
       .then((data) => {
         Swal.fire({
           title: "Success!",
