@@ -6,39 +6,40 @@ import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
-  const { signInUser, setUser, setLoading, googleSignIn } = useContext(AuthContext);
+  const { signInUser, setUser, setLoading, googleSignIn } =
+    useContext(AuthContext);
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleGoogleLogin = () => {
     googleSignIn()
-    .then((result) => {
-      const user = result.user;
-      setUser(user)
-      Swal.fire({
-        title: "Success!",
-        text: "You have successfully logged into your account!",
-        icon: "success",
-        willClose: () => {
-          navigate(location?.state ? location.state : "/");
-        },
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        Swal.fire({
+          title: "Success!",
+          text: "You have successfully logged into your account!",
+          icon: "success",
+          willClose: () => {
+            navigate(location?.state ? location.state : "/");
+          },
+        });
+      })
+      .catch((err) => {
+        if (err.code === "auth/popup-closed-by-user") {
+          return;
+        }
+        Swal.fire({
+          title: "Error!",
+          text: err.message,
+          icon: "error",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    })
-    .catch((err) => {
-      if(err.code === "auth/popup-closed-by-user"){
-        return;
-      }
-      Swal.fire({
-        title: "Error!",
-        text: err.message,
-        icon: "error",
-      });
-    })
-    .finally(() => {
-      setLoading(false);
-    });
   };
 
   const handleLogin = (e) => {
@@ -112,6 +113,10 @@ const Login = () => {
               </a>
             </label>
           </div>
+
+          <div className="form-control mt-2">
+            <button className="btn btn-success font-bold text-xl">Login</button>
+          </div>
           <div className="flex flex-col mt-4">
             <button
               onClick={handleGoogleLogin}
@@ -119,9 +124,6 @@ const Login = () => {
             >
               <FcGoogle></FcGoogle> Login With Google
             </button>
-          </div>
-          <div className="form-control mt-2">
-            <button className="btn btn-success font-bold text-xl">Login</button>
           </div>
         </form>
       </div>

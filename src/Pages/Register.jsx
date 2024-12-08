@@ -162,6 +162,9 @@ const Register = () => {
               {showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
             </button>
           </div>
+          <div className="form-control mt-2">
+            <button className="btn btn-info font-bold text-xl">Register</button>
+          </div>
           <div className="flex flex-col mt-6">
             <button
               onClick={handleGoogleLogin}
@@ -169,9 +172,6 @@ const Register = () => {
             >
               <FcGoogle></FcGoogle> Login With Google
             </button>
-          </div>
-          <div className="form-control mt-2">
-            <button className="btn btn-info font-bold text-xl">Register</button>
           </div>
         </form>
       </div>
