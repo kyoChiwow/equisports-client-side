@@ -2,9 +2,23 @@ import { Link, useLoaderData } from "react-router-dom";
 import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import { Fade } from "react-awesome-reveal";
+import { useState } from "react";
 
 const AllEquipments = () => {
   const products = useLoaderData();
+  const [sortProducts, setSortProducts] = useState(products);
+  const [sorted, setSorted] = useState(false);
+
+  const handleSort = () => {
+    if(!sorted) {
+      const sorting = [...sortProducts].sort((a,b) => b.itemPrice - a.itemPrice)
+      setSortProducts(sorting)
+    }
+    else {
+      setSortProducts(products)
+    }
+    setSorted(!sorted)
+  };
   return (
     <div>
       {/* Navbar */}
@@ -24,6 +38,9 @@ const AllEquipments = () => {
             choices!
           </p>
         </Fade>
+        <div className="mt-4">
+          <button onClick={handleSort} className="btn">Sort By Price</button>
+        </div>
       </div>
       {/* All Products Header div */}
 
@@ -44,7 +61,7 @@ const AllEquipments = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {products.map((product, idx) => (
+              {sortProducts.map((product, idx) => (
                 <tr key={product._id}>
                   <th>{idx + 1}</th>
                   <td>{product.itemName}</td>
