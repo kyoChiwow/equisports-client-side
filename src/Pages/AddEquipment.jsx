@@ -1,9 +1,9 @@
-import { Fade, Slide } from "react-awesome-reveal";
-import NavBar from "../Components/NavBar";
 import { useContext } from "react";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { Fade, Slide } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
+import NavBar from "../Components/NavBar";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
@@ -38,32 +38,32 @@ const AddEquipment = () => {
     };
 
     // Sending the data to Backend and Database
-    fetch("http://localhost:5000/products", {
-        method: "POST",
-        headers: {
-            "content-type" : "application/json",
-        },
-        body: JSON.stringify(newProduct)
+    fetch("https://assignment-10-server-theta-one.vercel.app/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
     })
-    .then(res => res.json())
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => {
+      .then((res) => res.json())
+      // eslint-disable-next-line no-unused-vars
+      .then((data) => {
         Swal.fire({
-            title: "Success!",
-            text: "You have successfully created your product!",
-            icon: "success",
-            willClose: () => {
-              form.reset();
-            },
-          });
-    })
-    .catch((err) => {
+          title: "Success!",
+          text: "You have successfully created your product!",
+          icon: "success",
+          willClose: () => {
+            form.reset();
+          },
+        });
+      })
+      .catch((err) => {
         Swal.fire({
-            title: "Error!",
-            text: err.message,
-            icon: "error",
-          });
-    })
+          title: "Error!",
+          text: err.message,
+          icon: "error",
+        });
+      });
   };
 
   return (

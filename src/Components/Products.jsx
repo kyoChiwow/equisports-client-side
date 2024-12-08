@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { Fade, Slide } from "react-awesome-reveal";
 import { AuthContext } from "../Contexts/AuthProvider";
+import Loading from "../Pages/Loading";
 import CategoryButtons from "./CategoryButtons";
 import ProductCard from "./ProductCard";
-import { Fade, Slide } from "react-awesome-reveal";
-import Loading from "../Pages/Loading";
 
 const Products = () => {
   // All States here
@@ -25,11 +25,10 @@ const Products = () => {
     }
   };
 
-
   // Fetching the data here is useEffect
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/products?limit=6")
+    fetch("https://assignment-10-server-theta-one.vercel.app/products?limit=6")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -39,10 +38,10 @@ const Products = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if(loading) {
-    return <Loading></Loading>
+  if (loading) {
+    return <Loading></Loading>;
   }
-  
+
   return (
     <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
       {/* Product header div */}

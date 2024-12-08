@@ -1,17 +1,19 @@
-import { Slide } from "react-awesome-reveal";
-import NavBar from "../Components/NavBar";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { Slide } from "react-awesome-reveal";
 import Footer from "../Components/Footer";
-import Loading from "./Loading";
 import MyEquipCard from "../Components/MyEquipCard";
+import NavBar from "../Components/NavBar";
+import { AuthContext } from "../Contexts/AuthProvider";
+import Loading from "./Loading";
 
 const MyEquipment = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
   const [emailProducts, setEmailProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myequipment?email=${user.email}`)
+    fetch(
+      `https://assignment-10-server-theta-one.vercel.app/myequipment?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setEmailProducts(data);
@@ -19,25 +21,24 @@ const MyEquipment = () => {
       .finally(() => {
         setLoading(false);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDeleteProduct = (id) => {
-        // Deleting from the database here
-        fetch(`http://localhost:5000/products/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount) {
-              const remainingProducts = emailProducts.filter(
-                (product) => product._id !== id
-              );
-              setEmailProducts(remainingProducts);
-            }
-          });
-      }
-
+    // Deleting from the database here
+    fetch(`https://assignment-10-server-theta-one.vercel.app/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          const remainingProducts = emailProducts.filter(
+            (product) => product._id !== id
+          );
+          setEmailProducts(remainingProducts);
+        }
+      });
+  };
 
   if (loading) {
     return <Loading></Loading>;
@@ -68,10 +69,10 @@ const MyEquipment = () => {
       {/* Product List Div here */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
         {emailProducts.map((emailProduct, idx) => (
-          <MyEquipCard 
-          key={idx} 
-          product={emailProduct}
-          onDelete= {handleDeleteProduct}
+          <MyEquipCard
+            key={idx}
+            product={emailProduct}
+            onDelete={handleDeleteProduct}
           ></MyEquipCard>
         ))}
       </div>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 const CategoryButtons = ({ productDataCategory }) => {
   const [categories, setCategories] = useState([]);
@@ -13,7 +13,7 @@ const CategoryButtons = ({ productDataCategory }) => {
 
   // Fetching All product data for the categories
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://assignment-10-server-theta-one.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         // Now mapping through this data to create the categories array

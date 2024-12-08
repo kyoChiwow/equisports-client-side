@@ -1,9 +1,9 @@
+import { useContext, useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
-import NavBar from "../Components/NavBar";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
-import { useNavigate, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import NavBar from "../Components/NavBar";
 import { AuthContext } from "../Contexts/AuthProvider";
 
 const UpdateProduct = () => {
@@ -25,12 +25,12 @@ const UpdateProduct = () => {
   } = fetchedProduct;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://assignment-10-server-theta-one.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFetchedProduct(data);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleUpdateProduct = (e) => {
@@ -63,7 +63,7 @@ const UpdateProduct = () => {
     };
 
     // Sending the data to Backend and Database
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://assignment-10-server-theta-one.vercel.app/products/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -138,7 +138,11 @@ const UpdateProduct = () => {
                   <div className="label">
                     <span className="font-semibold">Category Name</span>
                   </div>
-                  <select name="category" className="select select-bordered" defaultValue={itemCategory}>
+                  <select
+                    name="category"
+                    className="select select-bordered"
+                    defaultValue={itemCategory}
+                  >
                     <option disabled selected value={""}>
                       Pick one
                     </option>

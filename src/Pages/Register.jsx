@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { FcGoogle } from "react-icons/fc";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const Register = () => {
   const { creatingWithEmail, setUser, updateUser, setLoading, googleSignIn } =
@@ -51,7 +51,7 @@ const Register = () => {
 
     // Sending data to server
     const newUser = { username, email, photo };
-    fetch("http://localhost:5000/users", {
+    fetch("https://assignment-10-server-theta-one.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

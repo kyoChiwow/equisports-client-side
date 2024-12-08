@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomeLayout from "../Layouts/HomeLayout";
-import AllEquipments from "../Pages/AllEquipments";
 import AuthLayout from "../Layouts/AuthLayout";
-import Register from "../Pages/Register";
-import Login from "../Pages/Login";
-import PrivateRoute from "./PrivateRoute";
+import HomeLayout from "../Layouts/HomeLayout";
 import AddEquipment from "../Pages/AddEquipment";
-import ViewDetails from "../Pages/ViewDetails";
+import AllEquipments from "../Pages/AllEquipments";
 import Error404 from "../Pages/Error404";
+import Login from "../Pages/Login";
 import MyEquipment from "../Pages/MyEquipment";
+import Register from "../Pages/Register";
 import UpdateProduct from "../Pages/UpdateProduct";
+import ViewDetails from "../Pages/ViewDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,8 @@ const router = createBrowserRouter([
   {
     path: "/allequipments",
     element: <AllEquipments></AllEquipments>,
-    loader: () => fetch("http://localhost:5000/products"),
+    loader: () =>
+      fetch("https://assignment-10-server-theta-one.vercel.app/products"),
   },
   {
     path: "/addequipment",
@@ -45,7 +46,9 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/products/${params.id}`),
+      fetch(
+        `https://assignment-10-server-theta-one.vercel.app/products/${params.id}`
+      ),
   },
   {
     path: "/updateproduct/:id",
@@ -55,7 +58,9 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/products/${params.id}`)
+      fetch(
+        `https://assignment-10-server-theta-one.vercel.app/products/${params.id}`
+      ),
   },
   {
     path: "*",
