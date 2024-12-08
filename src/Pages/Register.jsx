@@ -155,6 +155,7 @@ const Register = () => {
               required
             />
             <button
+              type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="btn btn-xs absolute right-4 bottom-3"
             >

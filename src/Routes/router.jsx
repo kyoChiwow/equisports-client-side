@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddEquipment from "../Pages/AddEquipment";
 import ViewDetails from "../Pages/ViewDetails";
 import Error404 from "../Pages/Error404";
+import MyEquipment from "../Pages/MyEquipment";
+import UpdateProduct from "../Pages/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -28,13 +30,32 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/myequipment",
+    element: (
+      <PrivateRoute>
+        <MyEquipment></MyEquipment>
+      </PrivateRoute>
+    ),
+  },
+  {
     path: "/products/:id",
     element: (
       <PrivateRoute>
         <ViewDetails></ViewDetails>
       </PrivateRoute>
     ),
-    loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/products/${params.id}`),
+  },
+  {
+    path: "/updateproduct/:id",
+    element: (
+      <PrivateRoute>
+        <UpdateProduct></UpdateProduct>
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/products/${params.id}`)
   },
   {
     path: "*",

@@ -1,14 +1,38 @@
 import { Fade, Slide } from "react-awesome-reveal";
 import NavBar from "../Components/NavBar";
-import { useContext } from "react";
-import { AuthContext } from "../Contexts/AuthProvider";
 import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
+import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Contexts/AuthProvider";
 
-const AddEquipment = () => {
+const UpdateProduct = () => {
   const { user } = useContext(AuthContext);
+  const { id } = useParams();
+  const [fetchedProduct, setFetchedProduct] = useState({});
+  const navigate = useNavigate();
 
-  const handleAddEquipment = (e) => {
+  const {
+    itemName,
+    itemCategory,
+    itemPhoto,
+    itemDescription,
+    itemCustomization,
+    itemTime,
+    itemPrice,
+    itemRating,
+    itemStock,
+  } = fetchedProduct;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFetchedProduct(data);
+      });
+  }, []);
+
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
     const itemName = e.target.itemname.value;
@@ -23,7 +47,7 @@ const AddEquipment = () => {
     const itemUserName = e.target.username.value;
     const itemUserEmail = e.target.useremail.value;
 
-    const newProduct = {
+    const newUpdatedProduct = {
       itemName,
       itemCategory,
       itemPhoto,
@@ -38,31 +62,32 @@ const AddEquipment = () => {
     };
 
     // Sending the data to Backend and Database
-    fetch("http://localhost:5000/products", {
-        method: "POST",
-        headers: {
-            "content-type" : "application/json",
-        },
-        body: JSON.stringify(newProduct)
+    fetch(`http://localhost:5000/products/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUpdatedProduct),
     })
-    .then(res => res.json())
-    .then((data) => {
+      .then((res) => res.json())
+      .then((data) => {
         Swal.fire({
-            title: "Success!",
-            text: "You have successfully created your product!",
-            icon: "success",
-            willClose: () => {
-              form.reset();
-            },
-          });
-    })
-    .catch((err) => {
+          title: "Success!",
+          text: "You have successfully updated your product!",
+          icon: "success",
+          willClose: () => {
+            form.reset();
+            navigate("/myequipment");
+          },
+        });
+      })
+      .catch((err) => {
         Swal.fire({
-            title: "Error!",
-            text: err.message,
-            icon: "error",
-          });
-    })
+          title: "Error!",
+          text: err.message,
+          icon: "error",
+        });
+      });
   };
 
   return (
@@ -91,7 +116,7 @@ const AddEquipment = () => {
         {/* Form Div */}
         <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto mt-20 bg-[#343434] rounded-xl shadow-xl p-4">
           <div className="card bg-base-300 bg-opacity-50 w-full lg:max-w-[75%] xl:max-w-[70%] mx-auto shrink-0 shadow-2xl">
-            <form onSubmit={handleAddEquipment} className="card-body">
+            <form onSubmit={handleUpdateProduct} className="card-body">
               {/* Form 1st part */}
               <div className="flex lg:flex-row flex-col gap-4">
                 <div className="form-control lg:w-[49%]">
@@ -103,6 +128,7 @@ const AddEquipment = () => {
                     placeholder="Enter Item Name"
                     name="itemname"
                     className="input input-bordered"
+                    defaultValue={itemName}
                     required
                   />
                 </div>
@@ -110,8 +136,8 @@ const AddEquipment = () => {
                   <div className="label">
                     <span className="font-semibold">Category Name</span>
                   </div>
-                  <select name="category" className="select select-bordered">
-                    <option disabled selected>
+                  <select name="category" className="select select-bordered" defaultValue={itemCategory}>
+                    <option disabled selected value={""}>
                       Pick one
                     </option>
                     <option>Fitness & Training Equipment</option>
@@ -135,6 +161,7 @@ const AddEquipment = () => {
                     placeholder="Enter Photo URL"
                     name="addphoto"
                     className="input input-bordered"
+                    defaultValue={itemPhoto}
                     required
                   />
                 </div>
@@ -147,6 +174,7 @@ const AddEquipment = () => {
                     placeholder="Enter Product Description"
                     name="description"
                     className="input input-bordered"
+                    defaultValue={itemDescription}
                     required
                   />
                 </div>
@@ -164,6 +192,7 @@ const AddEquipment = () => {
                     placeholder="Enter Customization Details"
                     name="customize"
                     className="input input-bordered"
+                    defaultValue={itemCustomization}
                     required
                   />
                 </div>
@@ -176,6 +205,7 @@ const AddEquipment = () => {
                     placeholder="Enter Processing Time (Hours)"
                     name="processtime"
                     className="input input-bordered"
+                    defaultValue={itemTime}
                     required
                   />
                 </div>
@@ -193,6 +223,7 @@ const AddEquipment = () => {
                     placeholder="Enter Product Price (Dollar)"
                     name="price"
                     className="input input-bordered"
+                    defaultValue={itemPrice}
                     required
                   />
                 </div>
@@ -205,6 +236,7 @@ const AddEquipment = () => {
                     placeholder="Enter Product Rating (0-5)"
                     name="rating"
                     className="input input-bordered"
+                    defaultValue={itemRating}
                     required
                   />
                 </div>
@@ -255,13 +287,14 @@ const AddEquipment = () => {
                     placeholder="Enter Available Stock"
                     name="stock"
                     className="input input-bordered"
+                    defaultValue={itemStock}
                     required
                   />
                 </div>
               </div>
               {/* Form 6th part */}
               <div className="form-control mt-6">
-                <button className="btn btn-success">Add Product</button>
+                <button className="btn btn-success">Update Product</button>
               </div>
             </form>
           </div>
@@ -279,4 +312,4 @@ const AddEquipment = () => {
   );
 };
 
-export default AddEquipment;
+export default UpdateProduct;
