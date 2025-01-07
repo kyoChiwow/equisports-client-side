@@ -5,6 +5,7 @@ import NavBar from "../Components/NavBar";
 import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
 
 const MyEquipment = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
