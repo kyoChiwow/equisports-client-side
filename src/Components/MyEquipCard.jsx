@@ -42,7 +42,7 @@ const MyEquipCard = ({ product, onDelete }) => {
         {/* Image div */}
 
         {/* Info Div */}
-        <div>
+        <div className="mb-4">
           <p className="text-lg font-medium mb-2">
             Product: <span className="font-bold">{itemName}</span>
           </p>
@@ -59,16 +59,12 @@ const MyEquipCard = ({ product, onDelete }) => {
         {/* Info Div */}
 
         {/* View Details Button Div */}
-        <div className="mt-8 mb-4 flex gap-4">
-          <Link to={`/updateproduct/${_id}`}>
-            <button className="btn btn-warning font-bold">Update</button>
+        <div className="w-full">
+          <Link to={`/products/${_id}`}>
+            <button className="btn btn-warning w-full rounded-b-xl rounded-t-none font-bold">
+              View Details
+            </button>
           </Link>
-          <button
-            onClick={handleDelete}
-            className="btn btn-error btn-outline font-bold"
-          >
-            Delete
-          </button>
         </div>
         {/* View Details Button Div */}
       </div>

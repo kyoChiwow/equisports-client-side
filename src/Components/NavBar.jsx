@@ -24,7 +24,7 @@ const NavBar = () => {
   const handleThemeChange = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-  const links = (
+  const links = user ? (
     <>
       <NavLink
         to={"/"}
@@ -66,21 +66,104 @@ const NavBar = () => {
       >
         My Equipment
       </NavLink>
+      <NavLink
+        to={"/contact"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        Contact
+      </NavLink>
+      <NavLink
+        to={"/support"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        Support
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        About Us
+      </NavLink>
+    </>
+  ) : (
+    <>
+      <NavLink
+        to={"/"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to={"/allequipments"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        All Equipments
+      </NavLink>
+      <NavLink
+        to={"/contact"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        Contact
+      </NavLink>
+      <NavLink
+        to={"/support"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        Support
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-black shadow-xl font-extrabold bg-gray-500 p-3 rounded-lg transition-colors duration-500 ease-in-out"
+            : "font-semibold text-white hover:bg-gray-600 p-3 rounded-lg transition-colors ease-in-out duration-500"
+        }
+      >
+        About Us
+      </NavLink>
     </>
   );
+
   return (
-    <div className="bg-[#343434]">
+    <div className="fixed z-10 bg-base-300 bg-opacity-80 w-full py-4">
       <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto flex justify-between items-center">
         {/* Logo and Name */}
         <div className="flex items-center">
           <img className="w-[90px] rounded-full" src={logo} alt="" />
-          <h1 className="text-3xl font-bold text-white hidden xl:flex">
-            EquiSports
-          </h1>
         </div>
         {/* Logo and Name */}
         {/* Items  */}
-        <div className="items-center gap-8 hidden lg:flex">{links}</div>
+        <div className="items-center gap-8 hidden lg:flex justify-between mx-auto">
+          {links}
+        </div>
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg

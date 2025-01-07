@@ -29,27 +29,10 @@ const Footer = () => {
       </nav>
       <nav>
         <h6 className="footer-title text-white text-lg">Company</h6>
-        <a className="link link-hover text-white text-lg">About us</a>
-        <a className="link link-hover text-white text-lg">Contact</a>
-        <a className="link link-hover text-white text-lg">Jobs</a>
-        <a className="link link-hover text-white text-lg">Press kit</a>
+        <Link to={"/about"} className="link link-hover text-white text-lg">About us</Link>
+        <Link to={"/contact"} className="link link-hover text-white text-lg">Contact</Link>
+        <Link to={"/support"} className="link link-hover text-white text-lg">Support</Link>
       </nav>
-      <form>
-        <h6 className="footer-title text-white text-lg">Newsletter</h6>
-        <fieldset className="form-control w-80">
-          <label className="label">
-            <span className="label-text text-white">Enter your email address</span>
-          </label>
-          <div className="join">
-            <input
-              type="text"
-              placeholder="Enter Your Email"
-              className="input input-bordered join-item"
-            />
-            <button className="btn btn-primary join-item">Subscribe</button>
-          </div>
-        </fieldset>
-      </form>
     </footer>
   );
 };

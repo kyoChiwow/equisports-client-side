@@ -7,6 +7,8 @@ import Products from "../Components/Products";
 import Footer from "../Components/Footer";
 import Faq from "../Components/Faq";
 import UpcomingCard from "../Components/UpcomingCard";
+import Reviews from "../Components/Reviews";
+import Newsletter from "../Components/Newsletter";
 
 
 const HomeLayout = () => {
@@ -41,7 +43,7 @@ const HomeLayout = () => {
   return (
     <div>
       {/* Navbar Div here */}
-      <header className="lg:block hidden" data-aos="fade-down">
+      <header className="lg:block hidden">
         <NavBar></NavBar>
       </header>
       {/* Navbar Div here */}
@@ -53,31 +55,43 @@ const HomeLayout = () => {
       {/* Navbar Div here */}
 
       {/* Banner Div here */}
-      <div className="mt-10 px-3">
+      <div>
         <Banner></Banner>
       </div>
       {/* Banner Div here */}
 
       {/* Products Div */}
-      <div className="mt-20">
+      <div className="mt-12">
         <Products></Products>
       </div>
       {/* Products Div */}
 
+      {/* Reviews Div */}
+      <div className="mt-10">
+        <Reviews></Reviews>
+      </div>
+      {/* Reviews Div */}
+
       {/* FAQ Div */}
-      <div className="mt-32">
+      <div className="mt-10" data-aos="fade-up-right">
         <Faq></Faq>
       </div>
       {/* FAQ Div */}
 
       {/* Upcoming Products Div */}
-      <div className="mt-24">
+      <div className="mt-10" data-aos="fade-up-left">
         <UpcomingCard></UpcomingCard>
       </div>
       {/* Upcoming Products Div */}
 
+      {/* Newsletter div */}
+      <div className="mt-10" data-aos="fade-up">
+        <Newsletter></Newsletter>
+      </div>
+      {/* Newsletter div */}
+
       {/* Footer Div */}
-      <footer className="mt-20">
+      <footer className="mt-10">
         <Footer></Footer>
       </footer>
       {/* Footer Div */}

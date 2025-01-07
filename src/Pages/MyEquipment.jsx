@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import Footer from "../Components/Footer";
-import MyEquipCard from "../Components/MyEquipCard";
 import NavBar from "../Components/NavBar";
 import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const MyEquipment = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
@@ -52,7 +52,7 @@ const MyEquipment = () => {
       {/* Navbar Div here */}
 
       {/* My Equipment Header div here */}
-      <div className="mt-10">
+      <div className="pt-36">
         <Slide direction="right">
           <h1 className="text-4xl font-bold text-center">My Equipment List</h1>
         </Slide>
@@ -67,14 +67,35 @@ const MyEquipment = () => {
       {/* My Equipment Header div here */}
 
       {/* Product List Div here */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
-        {emailProducts.map((emailProduct, idx) => (
-          <MyEquipCard
-            key={idx}
-            product={emailProduct}
-            onDelete={handleDeleteProduct}
-          ></MyEquipCard>
-        ))}
+      <div className="mt-10 max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
+      <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th className="text-base">Product Name</th>
+                <th className="text-base">Product Category</th>
+                <th className="text-base">Product Stock</th>
+                <th className="text-base">Product Price</th>
+                <th className="text-base">Product Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {emailProducts.map((product, idx) => (
+                <tr key={product._id}>
+                  <th>{idx + 1}</th>
+                  <td>{product.itemName}</td>
+                  <td>{product.itemCategory}</td>
+                  <td>{product.itemStock}</td>
+                  <td>{product.itemPrice}$</td>
+                  <Link to={`/products/${product._id}`}>
+                    <td className="btn btn-ghost">View Details</td>
+                  </Link>
+                </tr>
+              ))}
+            </tbody>
+          </table>
       </div>
       {/* Product List Div here */}
 

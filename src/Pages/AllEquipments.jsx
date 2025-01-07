@@ -1,8 +1,9 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import { Fade } from "react-awesome-reveal";
 import { useState } from "react";
+import MyEquipCard from "../Components/MyEquipCard";
 
 const AllEquipments = () => {
   const products = useLoaderData();
@@ -28,7 +29,7 @@ const AllEquipments = () => {
       {/* Navbar */}
 
       {/* All Products Header div */}
-      <div className="mt-8 text-center">
+      <div className="pt-36 text-center">
         <Fade delay={1e3} cascade damping={1e-1}>
           <h1 className="text-4xl font-bold">All Equipments List</h1>
         </Fade>
@@ -45,36 +46,14 @@ const AllEquipments = () => {
       {/* All Products Header div */}
 
       {/* Products */}
-      <div className="bg-base-300 mt-10">
-        <div className="overflow-x-auto max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th></th>
-                <th className="text-base">Product Name</th>
-                <th className="text-base">Product Category</th>
-                <th className="text-base">Product Stock</th>
-                <th className="text-base">Product Price</th>
-                <th className="text-base">Product Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              {sortProducts.map((product, idx) => (
-                <tr key={product._id}>
-                  <th>{idx + 1}</th>
-                  <td>{product.itemName}</td>
-                  <td>{product.itemCategory}</td>
-                  <td>{product.itemStock}</td>
-                  <td>{product.itemPrice}$</td>
-                  <Link to={`/products/${product._id}`}>
-                    <td className="btn btn-ghost">View Details</td>
-                  </Link>
-                </tr>
+      <div className="mt-10">
+        <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {sortProducts.map((emailProduct, idx) => (
+                <MyEquipCard
+                key={idx}
+                product={emailProduct}
+              ></MyEquipCard>
               ))}
-            </tbody>
-          </table>
         </div>
       </div>
       {/* Products */}

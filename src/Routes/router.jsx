@@ -10,11 +10,26 @@ import Register from "../Pages/Register";
 import UpdateProduct from "../Pages/UpdateProduct";
 import ViewDetails from "../Pages/ViewDetails";
 import PrivateRoute from "./PrivateRoute";
+import AboutUs from "../Pages/AboutUs";
+import Contact from "../Pages/Contact";
+import Support from "../Pages/Support";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+  },
+  {
+    path: "/about",
+    element: <AboutUs></AboutUs>
+  },
+  {
+    path: "/contact",
+    element: <Contact></Contact>
+  },
+  {
+    path: "/support",
+    element: <Support></Support>
   },
   {
     path: "/allequipments",
@@ -40,11 +55,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/products/:id",
-    element: (
-      <PrivateRoute>
-        <ViewDetails></ViewDetails>
-      </PrivateRoute>
-    ),
+    element: <ViewDetails></ViewDetails>,
     loader: ({ params }) =>
       fetch(
         `https://assignment-10-server-theta-one.vercel.app/products/${params.id}`

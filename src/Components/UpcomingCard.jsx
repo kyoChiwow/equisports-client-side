@@ -25,11 +25,11 @@ const UpcomingCard = () => {
       {/* Header div */}
 
       {/* card div */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-[95%] md:max-w-[90%] lg:max-w-[98%] xl:max-w-[80%] mx-auto mt-8">
         {upcomingPro.map((pro, idx) => (
           <div key={idx}>
             {/* Card Wrapping Div */}
-            <div className="bg-base-200 rounded-xl flex flex-col items-center justify-center shadow-lg">
+            <div className="bg-base-200 rounded-xl flex flex-col justify-between shadow-lg h-[700px]">
               {/* Image div */}
               <div className="my-4 px-4 lg:mx-0">
                 <img

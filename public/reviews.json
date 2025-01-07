@@ -1,0 +1,52 @@
+[
+    {
+      "product_name": "Adjustable Dumbbell Set",
+      "rating": 4.8,
+      "review": "The dumbbell set is perfect for home workouts. It's easy to adjust weights and very durable.",
+      "user_avatar": "https://randomuser.me/api/portraits/men/1.jpg",
+      "customer_name": "John Smith"
+    },
+    {
+      "product_name": "Waterproof Hiking Backpack",
+      "rating": 4.5,
+      "review": "Great backpack for hiking! It has plenty of space and keeps everything dry even in heavy rain.",
+      "user_avatar": "https://randomuser.me/api/portraits/women/2.jpg",
+      "customer_name": "Emily Brown"
+    },
+    {
+      "product_name": "Professional Football",
+      "rating": 4.7,
+      "review": "This football has excellent grip and is perfect for training and matches. Highly recommend!",
+      "user_avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+      "customer_name": "Michael Johnson"
+    },
+    {
+      "product_name": "Full-Face Snorkeling Mask",
+      "rating": 4.4,
+      "review": "Very comfortable and provides a clear view underwater. Ideal for recreational snorkeling.",
+      "user_avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+      "customer_name": "Sophia Davis"
+    },
+    {
+      "product_name": "Lightweight Carbon Fiber Tennis Racket",
+      "rating": 4.9,
+      "review": "Amazing racket! Lightweight and perfectly balanced, it has improved my game significantly.",
+      "user_avatar": "https://randomuser.me/api/portraits/men/5.jpg",
+      "customer_name": "William Martinez"
+    },
+    {
+      "product_name": "Professional Squash Racket",
+      "rating": 4.6,
+      "review": "Good quality and perfect weight for competitive play. Worth the price.",
+      "user_avatar": "https://randomuser.me/api/portraits/women/6.jpg",
+      "customer_name": "Olivia Garcia"
+    },
+    {
+      "product_name": "Indoor/Outdoor Basketball",
+      "rating": 4.5,
+      "review": "Fantastic basketball for all surfaces. It bounces consistently and feels great in hand.",
+      "user_avatar": "https://randomuser.me/api/portraits/men/7.jpg",
+      "customer_name": "James Wilson"
+    }
+  ]
+  

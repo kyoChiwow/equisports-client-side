@@ -75,7 +75,7 @@ const AddEquipment = () => {
       {/* Navbar Here */}
 
       {/* Add Equipment form here */}
-      <main className="mt-10">
+      <main className="pt-36">
         <div>
           <Slide>
             <h1 className="text-4xl font-bold mb-4 text-center">
@@ -90,7 +90,7 @@ const AddEquipment = () => {
         </div>
 
         {/* Form Div */}
-        <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto mt-20 bg-[#343434] rounded-xl shadow-xl p-4">
+        <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto mt-10 bg-[#343434] rounded-xl shadow-xl p-4">
           <div className="card bg-base-300 bg-opacity-50 w-full lg:max-w-[75%] xl:max-w-[70%] mx-auto shrink-0 shadow-2xl">
             <form onSubmit={handleAddEquipment} className="card-body">
               {/* Form 1st part */}
