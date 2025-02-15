@@ -3,6 +3,9 @@ Online Sports Equipment Shop
 
 ---
 
+### Project Description
+EquiSports is a premium sports accessories e-commerce platform designed for athletes and fitness enthusiasts. It offers high-quality, handpicked sports gear with a seamless shopping experience. Users can register via email or Google sign-in with secure Firebase authentication. The platform features detailed product pages, an interactive cart and wishlist system, and a mobile-responsive UI built with Tailwind CSS and DaisyUI. With a visually appealing design and intuitive navigation, EquiSports ensures an engaging and efficient online shopping experience.
+
 
 ### Live Link: [https://assginments-2e056.web.app/](https://assginments-2e056.web.app/)
 ---
